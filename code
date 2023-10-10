@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+
+long long v[1001], i, n, smin, st = 1, dr = 1, stsecvmax, drsecvmax, secvmax = 0, nrnule = 0;
+
+int main()
+{
+    
+    cin >> n;
+    
+    for(i = 1; i <= n; i++)
+    {
+        cin >> v[i];
+        if(v[i] == 0)
+        {
+            nrnule ++;
+        }
+    }
+    
+    for(i = 1; i <= n; i++)
+    {
+        st = i;
+        dr = i;
+        
+        while(v[i] == 0 and i <= n)
+        {
+            dr = i;
+            i ++;
+        }
+        
+        if(secvmax < dr - st + 1)
+        {
+            secvmax = dr - st + 1;
+            stsecvmax = st;
+            drsecvmax = dr;
+        }
+    }
+    
+    if(nrnule == 1)
+    {
+        for(i = 1; i <= n; i++)
+        {
+            if(v[i] == 0)
+            {
+                cout << i << " " << i;
+                break;
+            }
+        }
+    }
+    else
+    {
+    cout << stsecvmax << " " << drsecvmax;
+    }
+    
+    return 0;
+}
